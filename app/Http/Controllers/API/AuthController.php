@@ -56,9 +56,11 @@ class AuthController extends Controller
             'name'=>$request->name,
             'mobile'=>$request->mobile,
             'email'=>$request->email,
+            'activation_code'=>rand(000000,999999),
             'password'=>bcrypt($request->password),
         ]);
-        $this->sendMessage('User registration successful!!', $request->mobile);
+
+        $this->sendMessage("Your Activation code is:$user->activation_code", $request->mobile);
 
         return response()->json(['message'=>'success','data'=>$user],200);
     }

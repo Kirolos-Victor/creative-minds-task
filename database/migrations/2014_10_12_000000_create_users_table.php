@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('activation_code')->nullable();
+            $table->string('activated_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
